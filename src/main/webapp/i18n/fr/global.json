@@ -10,7 +10,8 @@
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
         "equipe": "Equipe",
         "entraineur": "Entraineur",
-        "joueur": "Joueur"
+        "joueur": "Joueur",
+        "stade": "Stade"
       },
       "account": {
         "main": "Compte",

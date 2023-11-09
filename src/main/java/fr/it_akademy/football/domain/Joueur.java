@@ -42,7 +42,7 @@ public class Joueur implements Serializable {
     private Double prixTransfer;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = { "entraineur", "joueurs" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "entraineur", "stade", "joueurs" }, allowSetters = true)
     private Equipe equipe;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

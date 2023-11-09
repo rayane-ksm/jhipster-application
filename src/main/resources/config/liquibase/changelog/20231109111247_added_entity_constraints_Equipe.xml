@@ -14,5 +14,12 @@
                                  referencedColumnNames="id"
                                  referencedTableName="entraineur"
                                  />
+
+        <addForeignKeyConstraint baseColumnNames="stade_id"
+                                 baseTableName="equipe"
+                                 constraintName="fk_equipe__stade_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="stade"
+                                 />
     </changeSet>
 </databaseChangeLog>

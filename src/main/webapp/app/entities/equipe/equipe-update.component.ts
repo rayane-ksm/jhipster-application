@@ -9,6 +9,8 @@ import { useAlertService } from '@/shared/alert/alert.service';
 
 import EntraineurService from '@/entities/entraineur/entraineur.service';
 import { type IEntraineur } from '@/shared/model/entraineur.model';
+import StadeService from '@/entities/stade/stade.service';
+import { type IStade } from '@/shared/model/stade.model';
 import { type IEquipe, Equipe } from '@/shared/model/equipe.model';
 
 export default defineComponent({
@@ -23,6 +25,10 @@ export default defineComponent({
     const entraineurService = inject('entraineurService', () => new EntraineurService());
 
     const entraineurs: Ref<IEntraineur[]> = ref([]);
+
+    const stadeService = inject('stadeService', () => new StadeService());
+
+    const stades: Ref<IStade[]> = ref([]);
     const isSaving = ref(false);
     const currentLanguage = inject('currentLanguage', () => computed(() => navigator.language ?? 'fr'), true);
 
@@ -50,6 +56,11 @@ export default defineComponent({
         .then(res => {
           entraineurs.value = res.data;
         });
+      stadeService()
+        .retrieve()
+        .then(res => {
+          stades.value = res.data;
+        });
     };
 
     initRelationships();
@@ -62,6 +73,7 @@ export default defineComponent({
       nbJoueurs: {},
       classement: {},
       entraineur: {},
+      stade: {},
       joueurs: {},
     };
     const v$ = useVuelidate(validationRules, equipe as any);
@@ -75,6 +87,7 @@ export default defineComponent({
       isSaving,
       currentLanguage,
       entraineurs,
+      stades,
       v$,
       t$,
     };

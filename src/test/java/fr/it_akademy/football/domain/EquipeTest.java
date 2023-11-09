@@ -3,6 +3,7 @@ package fr.it_akademy.football.domain;
 import static fr.it_akademy.football.domain.EntraineurTestSamples.*;
 import static fr.it_akademy.football.domain.EquipeTestSamples.*;
 import static fr.it_akademy.football.domain.JoueurTestSamples.*;
+import static fr.it_akademy.football.domain.StadeTestSamples.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import fr.it_akademy.football.web.rest.TestUtil;
@@ -36,6 +37,18 @@ class EquipeTest {
 
         equipe.entraineur(null);
         assertThat(equipe.getEntraineur()).isNull();
+    }
+
+    @Test
+    void stadeTest() throws Exception {
+        Equipe equipe = getEquipeRandomSampleGenerator();
+        Stade stadeBack = getStadeRandomSampleGenerator();
+
+        equipe.setStade(stadeBack);
+        assertThat(equipe.getStade()).isEqualTo(stadeBack);
+
+        equipe.stade(null);
+        assertThat(equipe.getStade()).isNull();
     }
 
     @Test

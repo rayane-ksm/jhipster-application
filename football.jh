@@ -22,16 +22,22 @@ entity Joueur {
     prixTransfer Double
 }
 
+entity Stade {
+	nom String
+    lieu String
+}
+
 relationship OneToMany {
 	Equipe{joueur} to Joueur
 }
 
 relationship OneToOne {
 	Equipe{entraineur} to Entraineur
+    Equipe{stade} to Stade
 }
 
-dto Equipe, Joueur, Entraineur with mapstruct
-service Equipe, Joueur, Entraineur with serviceImpl
+dto Equipe, Joueur, Entraineur, Stade with mapstruct
+service Equipe, Joueur, Entraineur, Stade with serviceImpl
 
 
 

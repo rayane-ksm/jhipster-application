@@ -41,6 +41,11 @@ public class Equipe implements Serializable {
     @JoinColumn(unique = true)
     private Entraineur entraineur;
 
+    @JsonIgnoreProperties(value = { "equipe" }, allowSetters = true)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(unique = true)
+    private Stade stade;
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "equipe")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnoreProperties(value = { "equipe" }, allowSetters = true)
@@ -123,6 +128,19 @@ public class Equipe implements Serializable {
 
     public Equipe entraineur(Entraineur entraineur) {
         this.setEntraineur(entraineur);
+        return this;
+    }
+
+    public Stade getStade() {
+        return this.stade;
+    }
+
+    public void setStade(Stade stade) {
+        this.stade = stade;
+    }
+
+    public Equipe stade(Stade stade) {
+        this.setStade(stade);
         return this;
     }
 

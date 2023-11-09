@@ -4,14 +4,11 @@ import { shallowMount, type MountingOptions } from '@vue/test-utils';
 import sinon, { type SinonStubbedInstance } from 'sinon';
 import { type RouteLocation } from 'vue-router';
 
-import EquipeUpdate from './equipe-update.vue';
-import EquipeService from './equipe.service';
+import StadeUpdate from './stade-update.vue';
+import StadeService from './stade.service';
 import AlertService from '@/shared/alert/alert.service';
 
-import EntraineurService from '@/entities/entraineur/entraineur.service';
-import StadeService from '@/entities/stade/stade.service';
-
-type EquipeUpdateComponentType = InstanceType<typeof EquipeUpdate>;
+type StadeUpdateComponentType = InstanceType<typeof StadeUpdate>;
 
 let route: Partial<RouteLocation>;
 const routerGoMock = vitest.fn();
@@ -21,20 +18,20 @@ vitest.mock('vue-router', () => ({
   useRouter: () => ({ go: routerGoMock }),
 }));
 
-const equipeSample = { id: 123 };
+const stadeSample = { id: 123 };
 
 describe('Component Tests', () => {
-  let mountOptions: MountingOptions<EquipeUpdateComponentType>['global'];
+  let mountOptions: MountingOptions<StadeUpdateComponentType>['global'];
   let alertService: AlertService;
 
-  describe('Equipe Management Update Component', () => {
-    let comp: EquipeUpdateComponentType;
-    let equipeServiceStub: SinonStubbedInstance<EquipeService>;
+  describe('Stade Management Update Component', () => {
+    let comp: StadeUpdateComponentType;
+    let stadeServiceStub: SinonStubbedInstance<StadeService>;
 
     beforeEach(() => {
       route = {};
-      equipeServiceStub = sinon.createStubInstance<EquipeService>(EquipeService);
-      equipeServiceStub.retrieve.onFirstCall().resolves(Promise.resolve([]));
+      stadeServiceStub = sinon.createStubInstance<StadeService>(StadeService);
+      stadeServiceStub.retrieve.onFirstCall().resolves(Promise.resolve([]));
 
       alertService = new AlertService({
         i18n: { t: vitest.fn() } as any,
@@ -53,15 +50,7 @@ describe('Component Tests', () => {
         },
         provide: {
           alertService,
-          equipeService: () => equipeServiceStub,
-          entraineurService: () =>
-            sinon.createStubInstance<EntraineurService>(EntraineurService, {
-              retrieve: sinon.stub().resolves({}),
-            } as any),
-          stadeService: () =>
-            sinon.createStubInstance<StadeService>(StadeService, {
-              retrieve: sinon.stub().resolves({}),
-            } as any),
+          stadeService: () => stadeServiceStub,
         },
       };
     });
@@ -73,34 +62,34 @@ describe('Component Tests', () => {
     describe('save', () => {
       it('Should call update service on save for existing entity', async () => {
         // GIVEN
-        const wrapper = shallowMount(EquipeUpdate, { global: mountOptions });
+        const wrapper = shallowMount(StadeUpdate, { global: mountOptions });
         comp = wrapper.vm;
-        comp.equipe = equipeSample;
-        equipeServiceStub.update.resolves(equipeSample);
+        comp.stade = stadeSample;
+        stadeServiceStub.update.resolves(stadeSample);
 
         // WHEN
         comp.save();
         await comp.$nextTick();
 
         // THEN
-        expect(equipeServiceStub.update.calledWith(equipeSample)).toBeTruthy();
+        expect(stadeServiceStub.update.calledWith(stadeSample)).toBeTruthy();
         expect(comp.isSaving).toEqual(false);
       });
 
       it('Should call create service on save for new entity', async () => {
         // GIVEN
         const entity = {};
-        equipeServiceStub.create.resolves(entity);
-        const wrapper = shallowMount(EquipeUpdate, { global: mountOptions });
+        stadeServiceStub.create.resolves(entity);
+        const wrapper = shallowMount(StadeUpdate, { global: mountOptions });
         comp = wrapper.vm;
-        comp.equipe = entity;
+        comp.stade = entity;
 
         // WHEN
         comp.save();
         await comp.$nextTick();
 
         // THEN
-        expect(equipeServiceStub.create.calledWith(entity)).toBeTruthy();
+        expect(stadeServiceStub.create.calledWith(entity)).toBeTruthy();
         expect(comp.isSaving).toEqual(false);
       });
     });
@@ -108,28 +97,28 @@ describe('Component Tests', () => {
     describe('Before route enter', () => {
       it('Should retrieve data', async () => {
         // GIVEN
-        equipeServiceStub.find.resolves(equipeSample);
-        equipeServiceStub.retrieve.resolves([equipeSample]);
+        stadeServiceStub.find.resolves(stadeSample);
+        stadeServiceStub.retrieve.resolves([stadeSample]);
 
         // WHEN
         route = {
           params: {
-            equipeId: '' + equipeSample.id,
+            stadeId: '' + stadeSample.id,
           },
         };
-        const wrapper = shallowMount(EquipeUpdate, { global: mountOptions });
+        const wrapper = shallowMount(StadeUpdate, { global: mountOptions });
         comp = wrapper.vm;
         await comp.$nextTick();
 
         // THEN
-        expect(comp.equipe).toMatchObject(equipeSample);
+        expect(comp.stade).toMatchObject(stadeSample);
       });
     });
 
     describe('Previous state', () => {
       it('Should go previous state', async () => {
-        equipeServiceStub.find.resolves(equipeSample);
-        const wrapper = shallowMount(EquipeUpdate, { global: mountOptions });
+        stadeServiceStub.find.resolves(stadeSample);
+        const wrapper = shallowMount(StadeUpdate, { global: mountOptions });
         comp = wrapper.vm;
         await comp.$nextTick();
 

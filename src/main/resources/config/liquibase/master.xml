@@ -20,6 +20,7 @@
     <include file="config/liquibase/changelog/20231109111247_added_entity_Equipe.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20231109111347_added_entity_Entraineur.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20231109111447_added_entity_Joueur.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231109111247_added_entity_Stade.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20231109111247_added_entity_constraints_Equipe.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20231109111447_added_entity_constraints_Joueur.xml" relativeToChangelogFile="false"/>

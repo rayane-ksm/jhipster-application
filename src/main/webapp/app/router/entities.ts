@@ -7,6 +7,10 @@ const Equipe = () => import('@/entities/equipe/equipe.vue');
 const EquipeUpdate = () => import('@/entities/equipe/equipe-update.vue');
 const EquipeDetails = () => import('@/entities/equipe/equipe-details.vue');
 
+const Stade = () => import('@/entities/stade/stade.vue');
+const StadeUpdate = () => import('@/entities/stade/stade-update.vue');
+const StadeDetails = () => import('@/entities/stade/stade-details.vue');
+
 const Entraineur = () => import('@/entities/entraineur/entraineur.vue');
 const EntraineurUpdate = () => import('@/entities/entraineur/entraineur-update.vue');
 const EntraineurDetails = () => import('@/entities/entraineur/entraineur-details.vue');
@@ -43,6 +47,30 @@ export default {
       path: 'equipe/:equipeId/view',
       name: 'EquipeView',
       component: EquipeDetails,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'stade',
+      name: 'Stade',
+      component: Stade,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'stade/new',
+      name: 'StadeCreate',
+      component: StadeUpdate,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'stade/:stadeId/edit',
+      name: 'StadeEdit',
+      component: StadeUpdate,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'stade/:stadeId/view',
+      name: 'StadeView',
+      component: StadeDetails,
       meta: { authorities: [Authority.USER] },
     },
     {

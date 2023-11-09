@@ -7,30 +7,18 @@
                         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
     <!--
-        Added the entity Equipe.
+        Added the entity Stade.
     -->
     <changeSet id="20231109111247-1" author="jhipster">
-        <createTable tableName="equipe">
+        <createTable tableName="stade">
             <column name="id" type="bigint" autoIncrement="true" startWith="1500">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="nom" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="pays" type="varchar(255)">
+            <column name="lieu" type="varchar(255)">
                 <constraints nullable="true" />
-            </column>
-            <column name="nb_joueurs" type="bigint">
-                <constraints nullable="true" />
-            </column>
-            <column name="classement" type="bigint">
-                <constraints nullable="true" />
-            </column>
-            <column name="entraineur_id" type="bigint">
-                <constraints nullable="true" unique="true" uniqueConstraintName="ux_equipe__entraineur_id" />
-            </column>
-            <column name="stade_id" type="bigint">
-                <constraints nullable="true" unique="true" uniqueConstraintName="ux_equipe__stade_id" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
@@ -48,15 +36,13 @@
     -->
     <changeSet id="20231109111247-1-data" author="jhipster" context="faker">
         <loadData
-                  file="config/liquibase/fake-data/equipe.csv"
+                  file="config/liquibase/fake-data/stade.csv"
                   separator=";"
-                  tableName="equipe"
+                  tableName="stade"
                   usePreparedStatements="true">
             <column name="id" type="numeric"/>
             <column name="nom" type="string"/>
-            <column name="pays" type="string"/>
-            <column name="nb_joueurs" type="numeric"/>
-            <column name="classement" type="numeric"/>
+            <column name="lieu" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

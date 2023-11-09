@@ -1,6 +1,7 @@
 import { defineComponent, provide } from 'vue';
 
 import EquipeService from './equipe/equipe.service';
+import StadeService from './stade/stade.service';
 import EntraineurService from './entraineur/entraineur.service';
 import JoueurService from './joueur/joueur.service';
 import UserService from '@/entities/user/user.service';
@@ -12,6 +13,7 @@ export default defineComponent({
   setup() {
     provide('userService', () => new UserService());
     provide('equipeService', () => new EquipeService());
+    provide('stadeService', () => new StadeService());
     provide('entraineurService', () => new EntraineurService());
     provide('joueurService', () => new JoueurService());
     // jhipster-needle-add-entity-service-to-entities-component - JHipster will import entities services here
