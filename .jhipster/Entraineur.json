@@ -1,0 +1,28 @@
+{
+  "applications": "*",
+  "changelogDate": "20231109111347",
+  "dto": "mapstruct",
+  "entityTableName": "entraineur",
+  "fields": [
+    {
+      "fieldName": "nom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "numIdent",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "dateNaissance",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "ancienneEquipe",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Entraineur",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

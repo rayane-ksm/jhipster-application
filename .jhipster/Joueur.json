@@ -1,0 +1,36 @@
+{
+  "applications": "*",
+  "changelogDate": "20231109111447",
+  "dto": "mapstruct",
+  "entityTableName": "joueur",
+  "fields": [
+    {
+      "fieldName": "nom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "poste",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "numeroMaillot",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "telephone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateNaissance",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "prixTransfer",
+      "fieldType": "Double"
+    }
+  ],
+  "name": "Joueur",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}
