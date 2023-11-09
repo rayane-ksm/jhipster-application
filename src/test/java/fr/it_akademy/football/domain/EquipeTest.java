@@ -52,15 +52,15 @@ class EquipeTest {
     }
 
     @Test
-    void joueurTest() throws Exception {
+    void joueursTest() throws Exception {
         Equipe equipe = getEquipeRandomSampleGenerator();
         Joueur joueurBack = getJoueurRandomSampleGenerator();
 
-        equipe.addJoueur(joueurBack);
+        equipe.addJoueurs(joueurBack);
         assertThat(equipe.getJoueurs()).containsOnly(joueurBack);
         assertThat(joueurBack.getEquipe()).isEqualTo(equipe);
 
-        equipe.removeJoueur(joueurBack);
+        equipe.removeJoueurs(joueurBack);
         assertThat(equipe.getJoueurs()).doesNotContain(joueurBack);
         assertThat(joueurBack.getEquipe()).isNull();
 

@@ -14,7 +14,15 @@
     }
   ],
   "name": "Stade",
-  "relationships": [],
+  "relationships": [
+    {
+      "otherEntityName": "equipe",
+      "otherEntityRelationshipName": "stade",
+      "relationshipName": "equipe",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-one"
+    }
+  ],
   "searchEngine": "no",
   "service": "serviceImpl"
 }
