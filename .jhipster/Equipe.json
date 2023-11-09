@@ -25,19 +25,21 @@
   "relationships": [
     {
       "otherEntityName": "entraineur",
+      "otherEntityRelationshipName": "equipe",
       "relationshipName": "entraineur",
       "relationshipSide": "left",
       "relationshipType": "one-to-one"
     },
     {
       "otherEntityName": "stade",
+      "otherEntityRelationshipName": "equipe",
       "relationshipName": "stade",
       "relationshipSide": "left",
       "relationshipType": "one-to-one"
     },
     {
       "otherEntityName": "joueur",
-      "relationshipName": "joueur",
+      "relationshipName": "joueurs",
       "relationshipSide": "left",
       "relationshipType": "one-to-many"
     }

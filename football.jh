@@ -28,12 +28,12 @@ entity Stade {
 }
 
 relationship OneToMany {
-	Equipe{joueur} to Joueur
+	Equipe{joueurs} to Joueur
 }
 
 relationship OneToOne {
-	Equipe{entraineur} to Entraineur
-    Equipe{stade} to Stade
+	Equipe to Entraineur
+    Equipe to Stade
 }
 
 dto Equipe, Joueur, Entraineur, Stade with mapstruct

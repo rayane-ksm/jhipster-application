@@ -22,7 +22,15 @@
     }
   ],
   "name": "Entraineur",
-  "relationships": [],
+  "relationships": [
+    {
+      "otherEntityName": "equipe",
+      "otherEntityRelationshipName": "entraineur",
+      "relationshipName": "equipe",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-one"
+    }
+  ],
   "searchEngine": "no",
   "service": "serviceImpl"
 }

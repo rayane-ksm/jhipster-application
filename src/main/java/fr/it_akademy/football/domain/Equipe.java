@@ -163,13 +163,13 @@ public class Equipe implements Serializable {
         return this;
     }
 
-    public Equipe addJoueur(Joueur joueur) {
+    public Equipe addJoueurs(Joueur joueur) {
         this.joueurs.add(joueur);
         joueur.setEquipe(this);
         return this;
     }
 
-    public Equipe removeJoueur(Joueur joueur) {
+    public Equipe removeJoueurs(Joueur joueur) {
         this.joueurs.remove(joueur);
         joueur.setEquipe(null);
         return this;
