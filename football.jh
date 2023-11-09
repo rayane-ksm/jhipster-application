@@ -1,0 +1,39 @@
+
+entity Equipe {
+	nom String
+    pays String
+    nbJoueurs Long
+    classement Long
+}
+
+entity Entraineur {
+	nom String
+    numIdent Long
+    dateNaissance Instant
+    ancienneEquipe String
+}
+
+entity Joueur {
+	nom String
+    poste String
+    numeroMaillot Long
+    telephone String
+    dateNaissance Instant
+    prixTransfer Double
+}
+
+relationship OneToMany {
+	Equipe{joueur} to Joueur
+}
+
+relationship OneToOne {
+	Equipe{entraineur} to Entraineur
+}
+
+dto Equipe, Joueur, Entraineur with mapstruct
+service Equipe, Joueur, Entraineur with serviceImpl
+
+
+
+
+
