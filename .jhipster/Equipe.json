@@ -1,0 +1,41 @@
+{
+  "applications": "*",
+  "changelogDate": "20231109111247",
+  "dto": "mapstruct",
+  "entityTableName": "equipe",
+  "fields": [
+    {
+      "fieldName": "nom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pays",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nbJoueurs",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "classement",
+      "fieldType": "Long"
+    }
+  ],
+  "name": "Equipe",
+  "relationships": [
+    {
+      "otherEntityName": "entraineur",
+      "relationshipName": "entraineur",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "joueur",
+      "relationshipName": "joueur",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}
