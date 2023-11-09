@@ -34,6 +34,7 @@
             <th scope="row"><span v-text="t$('jhipsterApplicationFootballApp.equipe.nbJoueurs')"></span></th>
             <th scope="row"><span v-text="t$('jhipsterApplicationFootballApp.equipe.classement')"></span></th>
             <th scope="row"><span v-text="t$('jhipsterApplicationFootballApp.equipe.entraineur')"></span></th>
+            <th scope="row"><span v-text="t$('jhipsterApplicationFootballApp.equipe.stade')"></span></th>
             <th scope="row"></th>
           </tr>
         </thead>
@@ -51,6 +52,11 @@
                 <router-link :to="{ name: 'EntraineurView', params: { entraineurId: equipe.entraineur.id } }">{{
                   equipe.entraineur.id
                 }}</router-link>
+              </div>
+            </td>
+            <td>
+              <div v-if="equipe.stade">
+                <router-link :to="{ name: 'StadeView', params: { stadeId: equipe.stade.id } }">{{ equipe.stade.id }}</router-link>
               </div>
             </td>
             <td class="text-right">

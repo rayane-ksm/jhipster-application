@@ -3,18 +3,17 @@ package fr.it_akademy.football.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.io.Serializable;
-import java.time.Instant;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
- * A Entraineur.
+ * A Stade.
  */
 @Entity
-@Table(name = "entraineur")
+@Table(name = "stade")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @SuppressWarnings("common-java:DuplicatedBlocks")
-public class Entraineur implements Serializable {
+public class Stade implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -26,17 +25,11 @@ public class Entraineur implements Serializable {
     @Column(name = "nom")
     private String nom;
 
-    @Column(name = "num_ident")
-    private Long numIdent;
-
-    @Column(name = "date_naissance")
-    private Instant dateNaissance;
-
-    @Column(name = "ancienne_equipe")
-    private String ancienneEquipe;
+    @Column(name = "lieu")
+    private String lieu;
 
     @JsonIgnoreProperties(value = { "entraineur", "stade", "joueurs" }, allowSetters = true)
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "entraineur")
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "stade")
     private Equipe equipe;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
@@ -45,7 +38,7 @@ public class Entraineur implements Serializable {
         return this.id;
     }
 
-    public Entraineur id(Long id) {
+    public Stade id(Long id) {
         this.setId(id);
         return this;
     }
@@ -58,7 +51,7 @@ public class Entraineur implements Serializable {
         return this.nom;
     }
 
-    public Entraineur nom(String nom) {
+    public Stade nom(String nom) {
         this.setNom(nom);
         return this;
     }
@@ -67,43 +60,17 @@ public class Entraineur implements Serializable {
         this.nom = nom;
     }
 
-    public Long getNumIdent() {
-        return this.numIdent;
+    public String getLieu() {
+        return this.lieu;
     }
 
-    public Entraineur numIdent(Long numIdent) {
-        this.setNumIdent(numIdent);
+    public Stade lieu(String lieu) {
+        this.setLieu(lieu);
         return this;
     }
 
-    public void setNumIdent(Long numIdent) {
-        this.numIdent = numIdent;
-    }
-
-    public Instant getDateNaissance() {
-        return this.dateNaissance;
-    }
-
-    public Entraineur dateNaissance(Instant dateNaissance) {
-        this.setDateNaissance(dateNaissance);
-        return this;
-    }
-
-    public void setDateNaissance(Instant dateNaissance) {
-        this.dateNaissance = dateNaissance;
-    }
-
-    public String getAncienneEquipe() {
-        return this.ancienneEquipe;
-    }
-
-    public Entraineur ancienneEquipe(String ancienneEquipe) {
-        this.setAncienneEquipe(ancienneEquipe);
-        return this;
-    }
-
-    public void setAncienneEquipe(String ancienneEquipe) {
-        this.ancienneEquipe = ancienneEquipe;
+    public void setLieu(String lieu) {
+        this.lieu = lieu;
     }
 
     public Equipe getEquipe() {
@@ -112,15 +79,15 @@ public class Entraineur implements Serializable {
 
     public void setEquipe(Equipe equipe) {
         if (this.equipe != null) {
-            this.equipe.setEntraineur(null);
+            this.equipe.setStade(null);
         }
         if (equipe != null) {
-            equipe.setEntraineur(this);
+            equipe.setStade(this);
         }
         this.equipe = equipe;
     }
 
-    public Entraineur equipe(Equipe equipe) {
+    public Stade equipe(Equipe equipe) {
         this.setEquipe(equipe);
         return this;
     }
@@ -132,10 +99,10 @@ public class Entraineur implements Serializable {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof Entraineur)) {
+        if (!(o instanceof Stade)) {
             return false;
         }
-        return getId() != null && getId().equals(((Entraineur) o).getId());
+        return getId() != null && getId().equals(((Stade) o).getId());
     }
 
     @Override
@@ -147,12 +114,10 @@ public class Entraineur implements Serializable {
     // prettier-ignore
     @Override
     public String toString() {
-        return "Entraineur{" +
+        return "Stade{" +
             "id=" + getId() +
             ", nom='" + getNom() + "'" +
-            ", numIdent=" + getNumIdent() +
-            ", dateNaissance='" + getDateNaissance() + "'" +
-            ", ancienneEquipe='" + getAncienneEquipe() + "'" +
+            ", lieu='" + getLieu() + "'" +
             "}";
     }
 }

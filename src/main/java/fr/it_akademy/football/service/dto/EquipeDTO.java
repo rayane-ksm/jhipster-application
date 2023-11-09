@@ -21,6 +21,8 @@ public class EquipeDTO implements Serializable {
 
     private EntraineurDTO entraineur;
 
+    private StadeDTO stade;
+
     public Long getId() {
         return id;
     }
@@ -69,6 +71,14 @@ public class EquipeDTO implements Serializable {
         this.entraineur = entraineur;
     }
 
+    public StadeDTO getStade() {
+        return stade;
+    }
+
+    public void setStade(StadeDTO stade) {
+        this.stade = stade;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -100,6 +110,7 @@ public class EquipeDTO implements Serializable {
             ", nbJoueurs=" + getNbJoueurs() +
             ", classement=" + getClassement() +
             ", entraineur=" + getEntraineur() +
+            ", stade=" + getStade() +
             "}";
     }
 }

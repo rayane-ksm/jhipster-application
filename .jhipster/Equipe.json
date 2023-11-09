@@ -30,6 +30,12 @@
       "relationshipType": "one-to-one"
     },
     {
+      "otherEntityName": "stade",
+      "relationshipName": "stade",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
       "otherEntityName": "joueur",
       "relationshipName": "joueur",
       "relationshipSide": "left",

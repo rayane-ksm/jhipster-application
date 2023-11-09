@@ -4,6 +4,10 @@
       <font-awesome-icon icon="asterisk" />
       <span v-text="t$('global.menu.entities.equipe')"></span>
     </b-dropdown-item>
+    <b-dropdown-item to="/stade">
+      <font-awesome-icon icon="asterisk" />
+      <span v-text="t$('global.menu.entities.stade')"></span>
+    </b-dropdown-item>
     <b-dropdown-item to="/entraineur">
       <font-awesome-icon icon="asterisk" />
       <span v-text="t$('global.menu.entities.entraineur')"></span>
